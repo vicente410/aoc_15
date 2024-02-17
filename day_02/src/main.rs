@@ -4,8 +4,8 @@ fn main() {
     let input = fs::read_to_string("../input.txt").expect("Failed to read file");
     let presents = parse(&input);
 
-    println!("{}", calc_paper_size(&presents));
-    println!("{}", calc_ribbon_size(&presents));
+    println!("The total paper area needed is {}", calc_paper_size(&presents));
+    println!("The total ribbon lenght needed is {}", calc_ribbon_size(&presents));
 }
 
 fn parse(input: &String) -> Vec<(u32, u32, u32)> {
