@@ -1,7 +1,24 @@
 use md5;
+use std::env;
 
 fn main() {
-    let digest = md5::compute(b"abcdefghijklmnopqrstuvwxyz");
-    println!("{:x}", digest);
-    println!("c3fcd3d76192e4007dfb496cca67e13b");
+    let args: Vec<String> = env::args().collect();
+
+    println!("Part1: {}", solve(&args[1], "00000"));
+    println!("Part1: {}", solve(&args[1], "000000"));
+}
+
+fn solve(key: &str, search: &str) -> u32 {
+    let mut num = 1;
+
+    loop {
+        let key = format!("{}{}", key, num);
+        let digest = format!("{:x}", md5::compute(key.as_bytes()));
+
+        if &digest[0..search.len()] == search {
+            return num;
+        }
+
+        num += 1;
+    }
 }
