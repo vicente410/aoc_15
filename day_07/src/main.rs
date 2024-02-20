@@ -12,7 +12,7 @@ enum Gate<'a> {
 }
 
 fn main() {
-    let input = fs::read_to_string("../input2.txt").expect("Failed to read file");
+    let input = fs::read_to_string("../input.txt").expect("Failed to read file");
     let wires = parse(input.trim());
     let mut memo: HashMap<&str, u16> = HashMap::new();
 
