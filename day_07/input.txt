@@ -1,0 +1,3 @@
+y OR h -> p
+456 -> y
+NOT y -> h
