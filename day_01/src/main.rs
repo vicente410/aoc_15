@@ -2,42 +2,26 @@ use std::fs;
 
 fn main() {
     let input = fs::read_to_string("../input.txt").expect("Failed reading file");
+    let (final_floor, steps_to_neg) = calc_floors(&input);
 
-    println!("The final floor is {}", final_floor(&input));
-    println!(
-        "The number of steps to floor -1 is {}",
-        steps_to_neg(&input)
-    );
+    println!("Part 1: the final floor is {}", final_floor);
+    println!("Part 2: {} steps taken to reach floor -1", steps_to_neg);
 }
 
-fn final_floor(input: &String) -> isize {
-    let mut count = 0;
-
-    for c in input.chars() {
-        match c {
-            '(' => count += 1,
-            ')' => count -= 1,
-            _ => (),
-        }
-    }
-
-    count
-}
-
-fn steps_to_neg(input: &String) -> usize {
-    let mut count = 0;
+fn calc_floors(input: &String) -> (i32, usize) {
+    let mut floor = 0;
+    let mut steps_to_neg = 0;
 
     for (i, c) in input.chars().enumerate() {
         match c {
-            '(' => count += 1,
-            ')' => count -= 1,
+            '(' => floor += 1,
+            ')' => floor -= 1,
             _ => (),
         }
-
-        if count == -1 {
-            return i + 1;
+        if floor == -1 && steps_to_neg == 0 {
+            steps_to_neg = i + 1;
         }
     }
 
-    0
+    (floor, steps_to_neg)
 }
