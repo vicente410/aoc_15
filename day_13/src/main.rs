@@ -12,7 +12,6 @@ fn main() {
     );
 
     add_person(&mut names, &mut happiness, "Bruno");
-    println!("a");
     println!(
         "Part 2: the optimal seating arrangement with me has {} happiness",
         calc_happiness(&names, &happiness)
