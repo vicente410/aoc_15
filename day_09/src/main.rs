@@ -28,7 +28,7 @@ fn parse(input: &str) -> (Vec<&str>, HashMap<(&str, &str), u32>) {
 
 fn calc_routes(cities: &Vec<&str>, distances: &HashMap<(&str, &str), u32>) -> (u32, u32) {
     let permutations = cities.iter().permutations(cities.len());
-    let mut min = 1000000;
+    let mut min = u32::MAX;
     let mut max = 0;
 
     for perm in permutations {
